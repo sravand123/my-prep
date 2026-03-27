@@ -2,7 +2,7 @@
 title: "Scalability Fundamentals"
 roadmap: "System Design"
 isCompleted: false
-generatedAt: "2026-03-27T22:55:19.215Z"
+generatedAt: "2026-03-27T22:55:38.908Z"
 ---
 # Scalability Fundamentals
 
