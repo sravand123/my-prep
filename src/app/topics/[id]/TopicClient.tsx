@@ -41,7 +41,7 @@ export function TopicPage({ id }: TopicPageProps) {
     return (
       <div className="text-center py-20">
         <h1 className="text-2xl font-bold">Topic not found</h1>
-        <Link href="/" className="mt-4 text-emerald-600 hover:underline">
+        <Link href="/my-prep/#" className="mt-4 text-emerald-600 hover:underline">
           Back to Dashboard
         </Link>
       </div>
@@ -52,14 +52,14 @@ export function TopicPage({ id }: TopicPageProps) {
     <div className="space-y-6">
       <nav className="flex items-center gap-2 text-sm">
         <Link
-          href="/"
+          href="/my-prep/#"
           className="text-zinc-600 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"
         >
           Dashboard
         </Link>
         <span className="text-zinc-400">/</span>
         <Link
-          href={`/#/roadmaps/${topic.roadmapId}`}
+          href={`/my-prep/#/roadmaps/${topic.roadmapId}`}
           className="text-zinc-600 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"
         >
           {roadmap.name}

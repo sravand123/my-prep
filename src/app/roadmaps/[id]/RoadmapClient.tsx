@@ -33,7 +33,7 @@ export function RoadmapPage({ id }: RoadmapPageProps) {
     return (
       <div className="text-center py-20">
         <h1 className="text-2xl font-bold">Roadmap not found</h1>
-        <Link href="/" className="mt-4 text-emerald-600 hover:underline">
+        <Link href="/my-prep/#" className="mt-4 text-emerald-600 hover:underline">
           Back to Dashboard
         </Link>
       </div>
@@ -49,7 +49,7 @@ export function RoadmapPage({ id }: RoadmapPageProps) {
   return (
     <div className="space-y-6">
       <Link
-        href="/"
+        href="/my-prep/#"
         className="inline-flex items-center gap-1 text-sm text-zinc-600 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"
       >
         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ export function RoadmapPage({ id }: RoadmapPageProps) {
           {roadmap.topics.map((topic, index) => (
             <Link
               key={topic.id}
-              href={`/#/topics/${topic.id}`}
+              href={`/my-prep/#/topics/${topic.id}`}
               className={`flex items-center gap-4 rounded-xl border border-zinc-200 bg-white p-4 transition-all hover:border-emerald-500 hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${
                 topic.isCompleted ? "opacity-75" : ""
               }`}

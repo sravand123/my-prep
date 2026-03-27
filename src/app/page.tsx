@@ -67,7 +67,7 @@ export default function Dashboard() {
             return (
               <a
                 key={roadmap.id}
-                href={`/#/roadmaps/${roadmap.id}`}
+                href={`/my-prep/#/roadmaps/${roadmap.id}`}
                 className="group rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-emerald-500 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-emerald-500"
               >
                 <div className="flex items-start justify-between">
