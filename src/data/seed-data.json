@@ -1,0 +1,57 @@
+{
+  "roadmaps": [
+    {
+      "id": "dsa",
+      "name": "Data Structures & Algorithms",
+      "description": "Master core data structures and algorithms for coding interviews",
+      "topics": [
+        { "id": "dsa-1", "title": "Arrays & Strings", "order": 1 },
+        { "id": "dsa-2", "title": "Linked Lists", "order": 2 },
+        { "id": "dsa-3", "title": "Stacks & Queues", "order": 3 },
+        { "id": "dsa-4", "title": "Hash Maps", "order": 4 },
+        { "id": "dsa-5", "title": "Trees & Binary Search Trees", "order": 5 },
+        { "id": "dsa-6", "title": "Heaps & Priority Queues", "order": 6 },
+        { "id": "dsa-7", "title": "Graphs", "order": 7 },
+        { "id": "dsa-8", "title": "Recursion & Backtracking", "order": 8 },
+        { "id": "dsa-9", "title": "Dynamic Programming", "order": 9 },
+        { "id": "dsa-10", "title": "Sorting & Searching", "order": 10 },
+        { "id": "dsa-11", "title": "Tries", "order": 11 },
+        { "id": "dsa-12", "title": "Segment Trees", "order": 12 }
+      ]
+    },
+    {
+      "id": "system-design",
+      "name": "System Design",
+      "description": "Design scalable systems and ace architecture interviews",
+      "topics": [
+        { "id": "sd-1", "title": "Scalability Fundamentals", "order": 1 },
+        { "id": "sd-2", "title": "Load Balancing", "order": 2 },
+        { "id": "sd-3", "title": "Caching", "order": 3 },
+        { "id": "sd-4", "title": "Database Sharding", "order": 4 },
+        { "id": "sd-5", "title": "Microservices", "order": 5 },
+        { "id": "sd-6", "title": "Message Queues", "order": 6 },
+        { "id": "sd-7", "title": "CDN & Content Delivery", "order": 7 },
+        { "id": "sd-8", "title": "Rate Limiting", "order": 8 },
+        { "id": "sd-9", "title": "API Design", "order": 9 },
+        { "id": "sd-10", "title": "Authentication & Authorization", "order": 10 }
+      ]
+    },
+    {
+      "id": "lld",
+      "name": "Low-Level Design",
+      "description": "Design classes, components, and real-world objects",
+      "topics": [
+        { "id": "lld-1", "title": "SOLID Principles", "order": 1 },
+        { "id": "lld-2", "title": "Design Patterns Overview", "order": 2 },
+        { "id": "lld-3", "title": "Factory & Abstract Factory", "order": 3 },
+        { "id": "lld-4", "title": "Singleton Pattern", "order": 4 },
+        { "id": "lld-5", "title": "Observer Pattern", "order": 5 },
+        { "id": "lld-6", "title": "Strategy Pattern", "order": 6 },
+        { "id": "lld-7", "title": "Adapter & Facade", "order": 7 },
+        { "id": "lld-8", "title": "Builder Pattern", "order": 8 },
+        { "id": "lld-9", "title": "Proxy Pattern", "order": 9 },
+        { "id": "lld-10", "title": "State Machine Design", "order": 10 }
+      ]
+    }
+  ]
+}
