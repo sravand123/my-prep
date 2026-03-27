@@ -1,23 +1,15 @@
-import Anthropic from "@anthropic-ai/sdk";
-
 export interface GenerateContentParams {
   topicTitle: string;
   roadmapName: string;
 }
 
-export async function generateTopicContent({
-  topicTitle,
-  roadmapName,
-}: GenerateContentParams, apiKey: string): Promise<string> {
+export async function generateTopicContent(
+  { topicTitle, roadmapName }: GenerateContentParams,
+  apiKey: string
+): Promise<string> {
   if (!apiKey) {
     throw new Error("MiniMax API key is not set. Please add it in Settings.");
   }
-
-  const client = new Anthropic({
-    baseURL: "https://api.minimax.io/anthropic",
-    apiKey,
-    dangerouslyAllowBrowser: true,
-  });
 
   const systemPrompt = `<context>
 You are an expert technical interviewer and senior software engineer creating structured educational content for software engineering interview preparation.
@@ -47,7 +39,7 @@ Follow this exact structure and markdown formatting. Use ## for main sections an
 
 ### 4. Visual Diagrams
 - Include exactly ONE Mermaid diagram that explains the core concept, architecture, or workflow visually.
-- STRICT MERMAID RULES: Use only standard \`flowchart TD\`, \`flowchart LR\`, or \`sequenceDiagram\`. Do not use subgraphs, custom CSS, or experimental features. 
+- STRICT MERMAID RULES: Use only standard \`flowchart TD\`, \`flowchart LR\`, or \`sequenceDiagram\`. Do not use subgraphs, custom CSS, or experimental features.
 - Example format:
 \`\`\`mermaid
 flowchart TD
@@ -78,29 +70,40 @@ flowchart TD
 - Do not output any introductory or concluding conversational text outside of the requested markdown structure.
 </constraints>`;
 
-  const message = await client.messages.create({
-    model: "MiniMax-M2.7",
-    max_tokens: 4096,
-    system: systemPrompt,
-    messages: [
-      {
-        role: "user",
-        content: [
-          {
-            type: "text",
-            text: `Generate structured markdown content for "${topicTitle}" in the ${roadmapName} roadmap. Follow the exact section structure defined in your system prompt.`,
-          },
-        ],
-      },
-    ],
+  const response = await fetch("https://api.minimax.io/anthropic/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+    },
+    body: JSON.stringify({
+      model: "MiniMax-M2.7",
+      max_tokens: 4096,
+      system: systemPrompt,
+      messages: [
+        {
+          role: "user",
+          content: `Generate structured markdown content for "${topicTitle}" in the ${roadmapName} roadmap. Follow the exact section structure defined in your system prompt.`,
+        },
+      ],
+    }),
   });
 
-  let content = "";
-  for (const block of message.content) {
-    if (block.type === "text") {
-      content += block.text;
-    }
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`MiniMax API error: ${response.status} - ${errorText}`);
   }
+
+  const data = (await response.json()) as {
+    content?: Array<{ type: string; text?: string }>;
+  };
+
+  const content = data.content
+    ?.filter((block) => block.type === "text")
+    .map((block) => block.text || "")
+    .join("") || "";
 
   if (!content.trim()) {
     throw new Error("No content generated from AI");
