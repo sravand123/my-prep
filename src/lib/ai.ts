@@ -16,6 +16,7 @@ export async function generateTopicContent({
   const client = new Anthropic({
     baseURL: "https://api.minimax.io/anthropic",
     apiKey,
+    dangerouslyAllowBrowser: true,
   });
 
   const systemPrompt = `<context>
